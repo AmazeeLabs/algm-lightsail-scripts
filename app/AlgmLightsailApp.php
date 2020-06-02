@@ -11,7 +11,7 @@ class AlgmLightsailApp
 
     public function amIRoot()
     {
-        return $this->whoAmI() != "root";
+        return $this->whoAmI() === "root";
     }
 
     public function aptGetInstall($packageName)
