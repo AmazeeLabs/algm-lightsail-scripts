@@ -23,6 +23,8 @@ class AlgmLightsailApp
 
     public function aptGetInstall($packageName)
     {
-        
+        $returnVar = 255;
+        system("DEBIAN_FRONTEND=noninteractive apt-get -y install " . $packageName, $returnVar);
+        return $returnVar == 0;
     }
 }

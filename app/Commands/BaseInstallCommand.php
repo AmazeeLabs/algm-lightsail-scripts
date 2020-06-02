@@ -37,7 +37,7 @@ abstract class BaseInstallCommand extends Command
         $this->algmLightsailApp = $algmLightsailApp;
 
         if(!$this->preflightCheck()) {
-            $this->error("This command demands root");
+            $this->error("Preflight checks failed");
             return 255;
         }
 
