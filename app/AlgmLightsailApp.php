@@ -14,6 +14,11 @@ class AlgmLightsailApp
         return $this->whoAmI() === "root";
     }
 
+    public function aptGetUpdate()
+    {
+        
+    }
+
     public function aptGetInstall($packageName)
     {
         

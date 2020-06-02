@@ -13,7 +13,15 @@ abstract class BaseInstallCommand extends Command
 
     public function preflightCheck() 
     {
-        return $this->algmLightsailApp->amIRoot();
+        return 
+            $this->algmLightsailApp->amIRoot()
+            && $this->aptGetUpdate();
+    }
+
+    public function aptGetUpdate()
+    {
+        $this->info("Running apt-get update");
+        return $this->algmLightsailApp->aptGetUpdate();
     }
 
     final public function handle(AlgmLightsailApp $algmLightsailApp)
