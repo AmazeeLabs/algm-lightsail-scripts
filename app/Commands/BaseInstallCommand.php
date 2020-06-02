@@ -12,10 +12,18 @@ abstract class BaseInstallCommand extends Command
     protected $algmLightsailApp;
 
     public function preflightCheck() 
-    {
-        return 
-            $this->algmLightsailApp->amIRoot()
-            && $this->aptGetUpdate();
+    { 
+        if(!$this->algmLightsailApp->amIRoot()) {
+            $this->error("This command demands root");
+            return false;
+        }
+        
+        if(! $this->aptGetUpdate()) {
+            $this->error("apt update failed");
+            return false;
+        }
+
+        return true;
     }
 
     public function aptGetUpdate()
