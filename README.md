@@ -1,6 +1,6 @@
 # ALGM Lightsail Quickstart
 
-use the Lightsail launch script
+use the Lightsail launch script, replacing `<service>` with the service to install (EG mailhog)
 
 ```
 mkdir /algm && cd /algm
