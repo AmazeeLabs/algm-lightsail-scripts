@@ -5,5 +5,6 @@ use the Lightsail launch script, replacing `<service>` with the service to insta
 ```
 mkdir /algm && cd /algm
 git clone https://github.com/AmazeeLabs/algm-lightsail-scripts.git
-/algm/algm-lightsail-scripts/install.sh <service>
+cd /algm/algm-lightsail-scripts/
+env bash install.sh <service>
 ```
