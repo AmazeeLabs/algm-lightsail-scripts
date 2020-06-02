@@ -4,7 +4,7 @@ After=network.service
 
 [Service]
 Type=simple
-ExecStart=/opt/go/bin/MailHog > /dev/null 2>&1 &
+ExecStart=/opt/go/bin/MailHog -auth-file /algm/mailhog.pass > /dev/null 2>&1 &
 
 [Install]
 WantedBy=multi-user.target
