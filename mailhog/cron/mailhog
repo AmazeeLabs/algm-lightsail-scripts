@@ -4,6 +4,7 @@ MHPID=`pidof MailHog`
 SLACK_WEBHOOK=`cat /algm/SLACK_WEBHOOK`
 MHPASS=`/usr/bin/shuf -n1 /usr/share/dict/american-english`
 MHPASSHASH=`/opt/go/bin/MailHog bcrypt "$MHPASS"`
+echo "algm:$MHPASS" > /algm/mailhog.pass
 
 if [ ! -z "$SLACK_WEBHOOK" ]; then
   if [ ! -z "$MHPID" ]; then
