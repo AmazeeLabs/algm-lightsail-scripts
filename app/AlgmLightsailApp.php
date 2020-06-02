@@ -17,7 +17,7 @@ class AlgmLightsailApp
     public function aptGetUpdate()
     {
         $returnVar = 255;
-        system("DEBIAN_FRONTEND=noninteractive apt-get -y upgrade", $returnVar);
+        system("DEBIAN_FRONTEND=noninteractive apt-get -y update", $returnVar);
         return $returnVar;
     }
 
