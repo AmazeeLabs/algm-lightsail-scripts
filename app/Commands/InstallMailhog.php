@@ -28,6 +28,5 @@ class InstallMailhog extends BaseInstallCommand
             $this->error("Mailhog install failed");
             return 255;
         }
-
     }
 }
