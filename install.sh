@@ -1,5 +1,6 @@
 #!/bin/bash
 apt-get update
+apt-get install wamerican
 
 if [ -z "$1" ]; then
   echo "Nothing further to do";
