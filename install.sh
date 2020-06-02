@@ -6,6 +6,10 @@ if [ -z "$1" ]; then
   exit;
 fi;
 
+if [ ! -z "$SLACK_WEBHOOK" ]; then
+    echo "$SLACK_WEBHOOK" > /algm/SLACK_WEBHOOK
+fi
+
 PWD=`pwd`
 NEXTPWD=$PWD/$1
 NEXT=$NEXTPWD/install.sh
