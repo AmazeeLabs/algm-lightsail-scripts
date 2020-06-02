@@ -11,6 +11,7 @@ NEXTPWD=$PWD/$1
 NEXT=$NEXTPWD/install.sh
 
 if [ -f "$NEXT" ]; then
+  INSTALLPWD=$NEXTPWD
   source $NEXT
 else 
   echo "$NEXT does not exist"
