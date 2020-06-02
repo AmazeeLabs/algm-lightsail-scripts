@@ -6,6 +6,7 @@ use the Lightsail launch script, replacing `<service>` with the service to insta
 mkdir /algm && cd /algm
 git clone https://github.com/AmazeeLabs/algm-lightsail-scripts.git
 apt-get update
-apt-get install php-cli
+apt-get install -y php-cli
 /algm/algm-lightsail-scripts/builds/algm-lightsail install:<service>
 ```
+s
