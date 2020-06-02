@@ -14,11 +14,20 @@ class InstallMailhog extends BaseInstallCommand
     public function algmHandle(AlgmLightsailApp $algmLightsailApp)
     {
         $this->info('Proceeding with installation and configuration of Mailhog');
+
         if($algmLightsailApp->aptGetInstall("golang-go")) {
             $this->info("Golang installed");
         } else {
             $this->error("Goland install failed");
             return 255;
         }
+
+        if($algmLightsailApp->goGet("github.com/mailhog/MailHog")) {
+            $this->info("Mailhog installed");
+        } else {
+            $this->error("Mailhog install failed");
+            return 255;
+        }
+
     }
 }
