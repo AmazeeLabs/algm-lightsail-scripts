@@ -1,4 +1,4 @@
 ## Run the Blue Value deployment schedule
 
-7 * * * * root (/algm/algm-lightsail-scripts/blue-value/deploy dev 2>&1 | logger)
-30 * * * * root (/algm/algm-lightsail-scripts/blue-value/deploy prod 2>&1 | logger)
+15 */4 * * * root (/algm/algm-lightsail-scripts/blue-value/deploy dev 2>&1 | logger)
+1 */4 * * * root (/algm/algm-lightsail-scripts/blue-value/deploy prod 2>&1 | logger)
