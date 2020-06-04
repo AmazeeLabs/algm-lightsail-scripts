@@ -1,4 +1,4 @@
-#/usr/bin/env bash
+#!/bin/bash
 
 SLACK_WEBHOOK=`cat /algm/SLACK_WEBHOOK`
 MHPASS=`/usr/bin/shuf -n1 /usr/share/dict/american-english`
