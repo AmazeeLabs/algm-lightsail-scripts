@@ -9,8 +9,10 @@ fi
 if [ "$BVENV" == "dev" ]; then
 	echo Calling lagoon dev deployment
 	/usr/local/bin/lagoon -i /storage/blue-value/id_ed25519 -p blue-value -e dev --force deploy latest
-elif [ "$BVENV" == "prod"]; then
+elif [ "$BVENV" == "prod" ]; then
 	echo Calling prod dev deployment
+	/usr/local/bin/lagoon -i /storage/blue-value/id_ed25519 -p blue-value -e prod --force deploy latest
+else
+	echo "I don't know what to do wit $BVENV"
 fi
 
-echo Deploying Blue Value $1
