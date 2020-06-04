@@ -2,6 +2,10 @@
 apt-get update
 apt-get install wamerican
 
+mkdir /storage
+echo "/dev/xvdf /storage ext4 defaults,discard 0 0" >> /etc/fstab
+mount /storage
+
 if [ -z "$1" ]; then
   echo "Nothing further to do";
   exit;
