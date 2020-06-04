@@ -1,0 +1,9 @@
+#!/bin/bash
+
+BVENV=$1
+
+if [ -z "$BVENV" ]; then 
+	echo "Please suggest an environment (dev/prod)"
+fi
+
+echo Deploying Blue Value $1
