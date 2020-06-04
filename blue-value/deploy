@@ -1,6 +1,7 @@
 #!/bin/bash
 
 BVENV=$1
+SLACK_WEBHOOK=`cat /algm/SLACK_WEBHOOK`
 
 if [ -z "$BVENV" ]; then 
 	echo "Please suggest an environment (dev/prod)"
@@ -8,11 +9,20 @@ fi
 
 if [ "$BVENV" == "dev" ]; then
 	echo Calling lagoon dev deployment
-	/usr/local/bin/lagoon -i /storage/blue-value/id_ed25519 -p blue-value -e dev --force deploy latest
+	DONE=`/usr/local/bin/lagoon -i /storage/blue-value/id_ed25519 -p blue-value -e dev --force deploy latest`
+	
+
 elif [ "$BVENV" == "prod" ]; then
-	echo Calling prod dev deployment
-	/usr/local/bin/lagoon -i /storage/blue-value/id_ed25519 -p blue-value -e prod --force deploy latest
+	echo Calling prod dev deploymenta
+	DONE=`/usr/local/bin/lagoon -i /storage/blue-value/id_ed25519 -p blue-value -e prod --force deploy latest`
 else
-	echo "I don't know what to do wit $BVENV"
+	echo "I don't know what to do with $BVENV"
 fi
+
+if [ ! -z "$DONE" ]; then
+  if [ ! -z "$SLACK_WEBHOOK" ]; then
+	/usr/bin/curl -X POST --data-urlencode "payload={\"channel\": \"#blue_value_internal\", \"username\": \"ALGM Lightsail\", \"text\": \":bulb: Scheduled slack deployment initiated for $BVENV \", \"icon_emoji\": \":greenlight:\"}" $SLACK_WEBHOOK
+  fi
+fi
+
 
