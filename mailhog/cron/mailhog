@@ -1,16 +1,20 @@
 #!/bin/bash
 
 SLACK_WEBHOOK=`cat /algm/SLACK_WEBHOOK`
-MHPASS=`/usr/bin/shuf -n1 /usr/share/dict/american-english`
+MHUSER=`/usr/bin/shuf -n1 /usr/share/dict/american-english | tr '[:upper:]' '[:lower:]'`
+MHPASS1=`/usr/bin/shuf -n1 /usr/share/dict/american-english | tr '[:upper:]' '[:lower:]'`
+MHPASS2=`/usr/bin/shuf -n1 /usr/share/dict/american-english | tr '[:upper:]' '[:lower:]'`
+MHPASS3=`/usr/bin/shuf -n1 /usr/share/dict/american-english | tr '[:upper:]' '[:lower:]'`
+MHPASS="$MHPASS1 $MHPASS2 $MHPASS3"
 MHPASSHASH=`/opt/go/bin/MailHog bcrypt "$MHPASS"`
-echo "algm:$MHPASSHASH" > /algm/mailhog.pass
+echo "$MHUSER:$MHPASSHASH" > /algm/mailhog.pass
 
 systemctl restart mailhog
 MHPID=`pidof MailHog`
 
 if [ ! -z "$SLACK_WEBHOOK" ]; then
   if [ ! -z "$MHPID" ]; then
-    /usr/bin/curl -X POST --data-urlencode "payload={\"channel\": \"#algm-mailhog\", \"username\": \"ALGM Lightsail\", \"text\": \":pig: MailHog pid is $MHPID. Pass is '$MHPASS'\", \"icon_emoji\": \":pig:\"}" $SLACK_WEBHOOK
+    /usr/bin/curl -X POST --data-urlencode "payload={\"channel\": \"#algm-mailhog\", \"username\": \"ALGM Lightsail\", \"text\": \":pig: MailHog pid is $MHPID. User is '$MHUSER'. Pass is '$MHPASS'\", \"icon_emoji\": \":pig:\"}" $SLACK_WEBHOOK
   else
     /usr/bin/curl -X POST --data-urlencode "payload={\"channel\": \"#algm-mailhog\", \"username\": \"ALGM Lightsail\", \"text\": \":pig: MailHog is not running.\", \"icon_emoji\": \":pig:\"}" $SLACK_WEBHOOK
   fi
