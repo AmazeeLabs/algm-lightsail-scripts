@@ -14,7 +14,7 @@ MHPID=`pidof MailHog`
 
 if [ ! -z "$SLACK_WEBHOOK" ]; then
   if [ ! -z "$MHPID" ]; then
-    /usr/bin/curl -X POST --data-urlencode "payload={\"channel\": \"#algm-mailhog\", \"username\": \"ALGM Lightsail\", \"text\": \":pig: MailHog pid is $MHPID. User is '$MHUSER'. Pass is '$MHPASS'\", \"icon_emoji\": \":pig:\"}" $SLACK_WEBHOOK
+    /usr/bin/curl -X POST --data-urlencode "payload={\"channel\": \"#algm-mailhog\", \"username\": \"ALGM Lightsail\", \"text\": \":pig: MailHog pid is $MHPID. User is \`$MHUSER\`. Pass is \`$MHPASS\`\", \"icon_emoji\": \":pig:\"}" $SLACK_WEBHOOK
   else
     /usr/bin/curl -X POST --data-urlencode "payload={\"channel\": \"#algm-ops\", \"username\": \"ALGM Lightsail\", \"text\": \":pig: @sre NB: MailHog is not running.\", \"icon_emoji\": \":pig:\"}" $SLACK_WEBHOOK
   fi
