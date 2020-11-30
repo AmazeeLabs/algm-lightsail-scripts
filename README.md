@@ -9,3 +9,12 @@ git clone https://github.com/AmazeeLabs/algm-lightsail-scripts.git
 cd /algm/algm-lightsail-scripts/
 env bash install.sh <service>
 ```
+
+
+## Deploying changes
+
+Connect to the ALBA AWS account and visit `https://lightsail.aws.amazon.com/ls/webapp/eu-central-1/instances/MailHog/connect`
+
+Connect to the running instance via the ssh connect option.
+
+When connected, `sudo -s` as root, go to `cd /algm/algm-lightsail-scripts/` and `git pull`
